@@ -12,7 +12,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->paginate(5);
+        $students = Student::latest()->paginate(5);
         return view('students.index', compact('students'));
     }
 
@@ -64,8 +64,8 @@ class StudentsController extends Controller
             'age' => 'required',
             'course' => 'required',
         ]);
-        $post->update($request->all());
-        return redirect()->route('posts.index')->with('success', 'Student updated successfully.');
+        $student->update($request->all());
+        return redirect()->route('student.index')->with('success', 'Student updated successfully.');
     }
 
     /**
@@ -73,7 +73,7 @@ class StudentsController extends Controller
      */
     public function destroy(Students $students)
     {
-        $post->delete();
+        $student->delete();
         return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
     }
 }
