@@ -10,7 +10,6 @@
 </div>
 
 <form action="{{ route('students.update', $student) }}" method="POST">
-    @csrf @method('PUT')
     <div class="mb-3">
         <label>Name</label>
         <p class="form-control">{{ $student->name }}</p>
