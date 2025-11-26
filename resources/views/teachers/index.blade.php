@@ -3,7 +3,10 @@
 @section('content')
 <div class="d-flex justify-content-between mb-3">
     <h2>Teachers List</h2>
-    <a class="btn btn-primary" href="{{ route('teachers.create') }}">Create Teacher</a>
+    <div class="d-flex gap-2">
+        <a class="btn btn-primary" href="{{ route('students.index') }}">Students</a>
+        <a class="btn btn-primary" href="{{ route('teachers.create') }}">Create Teacher</a>
+    </div>
 </div>
 @if (session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
@@ -25,7 +28,6 @@
         <td>{{ $teacher->subject }}</td>
         <td>{{ $teacher->phone }}</td>
         <td>
-            <a class="btn btn-info btn-sm" href="{{ route('teachers.show', $teacher) }}">Show</a>
             <a class="btn btn-warning btn-sm" href="{{ route('teachers.edit', $teacher) }}">Edit</a>
             <form action="{{ route('teachers.destroy', $teacher) }}" method="POST" class="d-inline">
                 @csrf @method('DELETE')

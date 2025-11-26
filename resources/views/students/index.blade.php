@@ -3,7 +3,10 @@
     @section('content')
     <div class="d-flex justify-content-between mb-3">
         <h2>Students List</h2>
-        <a class="btn btn-primary" href="{{ route('students.create') }}">Create Student</a>
+            <div class="d-flex gap-2">
+                <a class="btn btn-primary" href="{{ route('teachers.index') }}">Teachers</a>
+                <a class="btn btn-primary" href="{{ route('students.create') }}">Create Student</a>
+            </div>
     </div><br><br>
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
