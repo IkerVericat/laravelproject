@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="d-flex justify-content-between mb-3">
-    <h2>Show Students</h2>
+    <h2>Show Student</h2>
     <div class="d-flex gap-2">
         <a class="btn btn-primary" href="{{ route('students.index') }}">Student list</a>
     </div>
