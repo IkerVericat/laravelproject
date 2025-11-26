@@ -28,6 +28,7 @@
         <td>{{ $teacher->subject }}</td>
         <td>{{ $teacher->phone }}</td>
         <td>
+            <a class="btn btn-info" href="{{ route('teachers.show', $teacher) }}">Show</a>
             <a class="btn btn-warning btn-sm" href="{{ route('teachers.edit', $teacher) }}">Edit</a>
             <form action="{{ route('teachers.destroy', $teacher) }}" method="POST" class="d-inline">
                 @csrf @method('DELETE')

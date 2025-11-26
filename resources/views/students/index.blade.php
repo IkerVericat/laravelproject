@@ -27,6 +27,8 @@
             <td>{{ $student->age }}</td>
             <td>{{ $student->course }}</td>
             <td>
+
+                <a class="btn btn-info" href="{{ route('students.show', $student) }}">Show</a>
                 <a class="btn btn-warning btn-sm" href="{{ route('students.edit', $student) }}">Edit</a>
                 <form action="{{ route('students.destroy', $student) }}" method="POST" class="d-inline">
                    @csrf @method('DELETE')
