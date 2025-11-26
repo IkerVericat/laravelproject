@@ -31,16 +31,19 @@ class StudentsController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'mail' => 'required',
-            'age' => 'required',
+            'email' => 'required|email',
+            'age' => 'required|integer',
             'course' => 'required',
         ]);
+
+        Student::create($request->all());
+        return redirect()->route('students.index')->with('success', 'Student created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Students $students)
+    public function show(Student $student)
     {
         return view('students.show', compact('student'));
     }
@@ -48,7 +51,7 @@ class StudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Students $students)
+    public function edit(Student $student)
     {
         return view('students.edit', compact('student'));
     }
@@ -56,22 +59,23 @@ class StudentsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Students $students)
+    public function update(Request $request, Student $student)
     {
         $request->validate([
             'name' => 'required',
-            'mail' => 'required',
-            'age' => 'required',
+            'email' => 'required|email',
+            'age' => 'required|integer',
             'course' => 'required',
         ]);
+
         $student->update($request->all());
-        return redirect()->route('student.index')->with('success', 'Student updated successfully.');
+        return redirect()->route('students.index')->with('success', 'Student updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Students $students)
+    public function destroy(Student $student)
     {
         $student->delete();
         return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
