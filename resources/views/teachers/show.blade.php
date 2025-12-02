@@ -8,8 +8,6 @@
         <a class="btn btn-primary" href="{{ route('teachers.index') }}">Teacher list</a>
     </div>
 </div>
-
-<form action="{{ route('teachers.update', $teacher) }}" method="POST">
     <div class="mb-3">
         <label>Name</label>
         <p class="form-control">{{ $teacher->name }}</p>
@@ -26,5 +24,4 @@
         <label>Name</label>
         <p class="form-control">{{ $teacher->phone }}</p>
     </div>
-   </form>
 @endsection

@@ -4,6 +4,7 @@
     <div class="d-flex justify-content-between mb-3">
         <h2>Students List</h2>
             <div class="d-flex gap-2">
+                <a class="btn btn-primary" href="{{ route('courses.index') }}">Courses</a>
                 <a class="btn btn-primary" href="{{ route('teachers.index') }}">Teachers</a>
                 <a class="btn btn-primary" href="{{ route('students.create') }}">Create Student</a>
             </div>
@@ -28,7 +29,7 @@
             <td>{{ $student->course }}</td>
             <td>
 
-                <a class="btn btn-info" href="{{ route('students.show', $student) }}">Show</a>
+                <a class="btn btn-info btn-sm" href="{{ route('students.show', $student) }}">Show</a>
                 <a class="btn btn-warning btn-sm" href="{{ route('students.edit', $student) }}">Edit</a>
                 <form action="{{ route('students.destroy', $student) }}" method="POST" class="d-inline">
                    @csrf @method('DELETE')

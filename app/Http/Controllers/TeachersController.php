@@ -12,7 +12,7 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::latest()->paginate(5);
+        $teachers = Teacher::oldest()->paginate(5);
         return view('teachers.index', compact('teachers'));
     }
 

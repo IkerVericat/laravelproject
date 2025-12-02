@@ -9,7 +9,6 @@
     </div>
 </div>
 
-<form action="{{ route('students.update', $student) }}" method="POST">
     <div class="mb-3">
         <label>Name</label>
         <p class="form-control">{{ $student->name }}</p>
@@ -26,5 +25,4 @@
         <label>Name</label>
         <p class="form-control">{{ $student->course }}</p>
     </div>
-   </form>
 @endsection
