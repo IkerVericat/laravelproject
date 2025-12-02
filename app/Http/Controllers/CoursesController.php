@@ -21,7 +21,7 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
+        return view('courses.create', compact('teachers'));
     }
 
     /**
@@ -31,6 +31,7 @@ class CoursesController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'teacher_id' => 'nullable|exists.teachers,id',
         ]);
 
         Course::create($request->all());
@@ -49,8 +50,9 @@ class CoursesController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Course $course)
-    {
-        return view('courses.edit', compact('course'));
+    {   
+        $teachers = Teacher::all();
+        return view('courses.edit', compact('course', 'teachers'));
     }
 
     /**
@@ -60,6 +62,7 @@ class CoursesController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'teacher_id' => 'nullable|exists:teacher_id',
         ]);
         $course->update($request->all());
         return redirect()->route('courses.index')->with('success', 'Course updated successfully.');

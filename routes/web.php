@@ -14,3 +14,4 @@ Route::get('/', [StudentsController::class, 'index']);
 Route::resource('students', StudentsController::class);
 Route::resource('teachers', TeachersController::class);
 Route::resource('courses', CoursesController::class);
+Route::get('/teacers/export', [TeachersController::class, 'export'])->name('teachers.export');

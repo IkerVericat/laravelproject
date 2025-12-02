@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
@@ -20,8 +21,9 @@ class StudentsController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('students.create');
+    {   
+        $courses = Course::all();
+        return view('students.create', compact('courses'));
     }
 
     /**
@@ -33,7 +35,7 @@ class StudentsController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'age' => 'required|integer',
-            'course' => 'required',
+            'course_id' => 'required|exists:courses,id',
         ]);
 
         Student::create($request->all());
@@ -52,8 +54,9 @@ class StudentsController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Student $student)
-    {
-        return view('students.edit', compact('student'));
+    {   
+        $courses = Course::all();
+        return view('students.edit', compact('student', 'courses'));
     }
 
     /**
@@ -65,7 +68,7 @@ class StudentsController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'age' => 'required|integer',
-            'course' => 'required',
+            'course_id' => 'required|exists:courses,id',
         ]);
 
         $student->update($request->all());

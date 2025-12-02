@@ -26,7 +26,7 @@
             <td>{{ $student->name }}</td>
             <td>{{ $student->email }}</td>
             <td>{{ $student->age }}</td>
-            <td>{{ $student->course }}</td>
+            <td>{{ $student->course ? $student->course->name : 'no course assigned' }}</td>
             <td>
 
                 <a class="btn btn-info btn-sm" href="{{ route('students.show', $student) }}">Show</a>

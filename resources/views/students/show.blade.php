@@ -23,6 +23,6 @@
     </div>
     <div class="mb-3">
         <label>Name</label>
-        <p class="form-control">{{ $student->course }}</p>
+        <p class="form-control">{{ $student->course ? $student->course->name : 'No course assigned' }}</p>
     </div>
 @endsection
