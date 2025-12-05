@@ -11,7 +11,10 @@ use App\Http\Controllers\CoursesController;
 
 Route::get('/', [StudentsController::class, 'index']);
 
+Route::get('/teachers/export', [TeachersController::class, 'export'])->name('teachers.export');
+Route::get('/students/export', [StudentsController::class, 'export'])->name('students.export');
+Route::get('/courses/export', [CoursesController::class, 'export'])->name('courses.export');
+
 Route::resource('students', StudentsController::class);
 Route::resource('teachers', TeachersController::class);
 Route::resource('courses', CoursesController::class);
-Route::get('/teacers/export', [TeachersController::class, 'export'])->name('teachers.export');

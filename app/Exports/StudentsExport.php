@@ -2,18 +2,18 @@
 
 namespace App\Exports;
 
-use App\Models\Teacher;
+use App\Models\Student;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class TeachersExport implements FromCollection, WithHeadings
+class StudentsExport implements FromCollection, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return Teacher::select('id', 'name', 'email', 'subject', 'phone')->get();
+        return Student::select('id', 'name', 'email', 'age', 'course')->get();
     }
 
     public function headings(): array {
@@ -21,8 +21,8 @@ class TeachersExport implements FromCollection, WithHeadings
             'ID',
             'Name',
             'Email',
-            'Subject',
-            'Phone',
+            'Age',
+            'Course',
         ];
     }
 }
