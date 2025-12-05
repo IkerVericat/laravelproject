@@ -34,5 +34,7 @@
     </tr>
     @endforeach
 </table>
+<a class="btn btn-success" href="{{ route('courses.export') }}">Export to Excel</a>
+
 {{ $courses->links() }}
 @endsection

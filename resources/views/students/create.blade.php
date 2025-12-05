@@ -18,7 +18,15 @@
     </div>
     <div class="mb-3">
         <label>Course</label>
-        <input type="text" name="course" class="form-control" required>
+        <select name="course_id" class="form-control" required>
+            <option value="">Select a course</option>
+            @foreach ($courses as $course)
+                <option value="{{ $course->id }}" {{ (isset($student) && $student->course_id == $course->id) ? 'selected' : '' }}>
+                    {{ $course->name }}
+                </option>
+            @endforeach
+        </select>
+        @error('course_id') <div class="text-danger">{{ $message }}</div> @enderror
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
