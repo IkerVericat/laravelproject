@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Teacher>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Student>
  */
-class TeacherFactory extends Factory
+class StudentFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +19,8 @@ class TeacherFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'subject' => $this->faker->randomElement(['Mathematics', 'Physics', 'Chemistry', 'Biology', 'History', 'Literature']),
-            'phone' => $this->faker->numberBetween(600000000, 699999999),
+            'age' => $this->faker->numberBetween(18, 30),
+            'course_id' => \App\Models\Course::inRandomOrder()->first()?->id,
         ];
     }
 }

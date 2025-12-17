@@ -13,7 +13,15 @@ class StudentsExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return Student::select('id', 'name', 'email', 'age', 'course')->get();
+        return Student::with('course')->get()->map(function ($student) {
+            return [
+                'id' => $student->id,
+                'name' => $student->name,
+                'email' => $student->email,
+                'age' => $student->age,
+                'course' => $student->course ? $student->course->name : 'Sin curso',
+            ];
+        });
     }
 
     public function headings(): array {

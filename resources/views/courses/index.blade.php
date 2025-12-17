@@ -16,14 +16,18 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Teacher</th>
+        <th>Students</th>
         <th>Actions</th>
     </tr>
     @foreach ($courses as $course)
     <tr>
         <td>{{ $course->id }}</td>
         <td>{{ $course->name }}</td>
+        <td>{{ $course->teacher ? $course->teacher->name : 'No teacher' }}</td>
+        <td>{{ $course->students->count() }} estudiants</td>
         <td>
-            
+
             <a class="btn btn-info btn-sm" href="{{ route('courses.show', $course) }}">Show</a>
             <a class="btn btn-warning btn-sm" href="{{ route('courses.edit', $course) }}">Edit</a>
             <form action="{{ route('courses.destroy', $course) }}" method="POST" class="d-inline">
