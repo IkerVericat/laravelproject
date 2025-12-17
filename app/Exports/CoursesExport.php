@@ -13,11 +13,12 @@ class CoursesExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return Course::with('teacher')->get()->map(function ($course) {
+        return Course::with(['teacher', 'students'])->get()->map(function ($course) {
             return [
                 'id' => $course->id,
                 'name' => $course->name,
                 'teacher' => $course->teacher ? $course->teacher->name : 'No teacher',
+                'students_count' => $course->students->count(),
             ];
         });
     }
@@ -27,6 +28,7 @@ class CoursesExport implements FromCollection, WithHeadings
             'ID',
             'Name',
             'Teacher',
+            'Students Count',
         ];
     }
 }

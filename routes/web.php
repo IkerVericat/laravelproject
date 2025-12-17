@@ -5,15 +5,15 @@ use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\TeachersController;
 use App\Http\Controllers\CoursesController;
 
-# Route::get('/', function () {
-#     return view('students/index');
-# });
 
 Route::get('/', [StudentsController::class, 'index']);
 
 Route::get('/teachers/export', [TeachersController::class, 'export'])->name('teachers.export');
 Route::get('/students/export', [StudentsController::class, 'export'])->name('students.export');
 Route::get('/courses/export', [CoursesController::class, 'export'])->name('courses.export');
+
+Route::post('/students/{student}/assign-course', [StudentsController::class, 'assignCourse'])->name('students.assignCourse');
+Route::delete('/students/{student}/remove-course', [StudentsController::class, 'removeCourse'])->name('students.removeCourse');
 
 Route::resource('students', StudentsController::class);
 Route::resource('teachers', TeachersController::class);

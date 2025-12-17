@@ -17,7 +17,8 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->randomElement(['Mathematics 101', 'Physics 201', 'Chemistry 301', 'Biology 401', 'History 101', 'Literature 201']),
+            'teacher_id' => \App\Models\Teacher::inRandomOrder()->first()?->id,
         ];
     }
 }

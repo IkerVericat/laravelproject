@@ -17,11 +17,10 @@ class StudentsFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->sentence,
-            'email' => $this->faker->safeEmail(),
-            'age' => $this->faker->randomNumber(2 true),
-            'course' => $this->faker->sentence,
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'age' => $this->faker->numberBetween(18, 30),
+            'course_id' => \App\Models\Course::inRandomOrder()->first()?->id,
         ];
-        $this->call(PostSeeder::class);
     }
 }

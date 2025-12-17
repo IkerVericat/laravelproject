@@ -18,8 +18,8 @@
     </div>
     <div class="mb-3">
         <label>Course</label>
-        <select name="course_id" class="form-control" required>
-            <option value="">Select a course</option>
+        <select name="course_id" class="form-control">
+            <option value="">Sin curso</option>
             @foreach ($courses as $course)
                 <option value="{{ $course->id }}" {{ (isset($student) && $student->course_id == $course->id) ? 'selected' : '' }}>
                     {{ $course->name }}
