@@ -19,7 +19,7 @@ class StudentsExport implements FromCollection, WithHeadings
                 'name' => $student->name,
                 'email' => $student->email,
                 'age' => $student->age,
-                'course' => $student->course ? $student->course->name : 'Sin curso',
+                'course' => $student->course ? $student->course->name : 'No Course',
             ];
         });
     }

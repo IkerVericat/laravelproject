@@ -17,6 +17,7 @@ class StudentApiController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:students',
+            'age' => 'required|integer',
             'course_id' => 'nullable|exists:courses,id'
         ]);
 
@@ -35,6 +36,8 @@ class StudentApiController extends Controller
         $validated = $request->validate([
             'name' => 'string|max:255',
             'email' => 'email|unique:students,email,' . $id,
+            'age' => 'integer',
+            'course_id' => 'nullable|exists:courses,id',
         ]);
 
         $student->update($validated);
